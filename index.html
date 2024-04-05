@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Rest Api. No Need Api Key And Unlimited Requests...">
+<meta property="og:image" content="https://telegra.ph/file/5dd79a267163d8f999eeb.jpg">
+<title>Faris APis | Docs</title>
+<style>
+  body {
+    border-radius: cover;
+    font-family: Arial, sans-serif;
+    background-color: #fcfcfc;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #preloader {
+    background: #000 url(images/giphy.gif) no-repeat center center;
+    height: 100vh;
+    width: 100%;
+    postion: fixed;
+    z-index: 100%;
+    
+  }
+ 
+  
+.container {
+    width: 100%;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .container-l {
+    width: 100%;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+    .container-h {
+    width: 100%;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .loading {
+    display: flex
+    
+  }
+  
+  .loading > div {
+    width: 2rem;
+    height: 2rem;
+    background-color: #ffd500;
+    margin: 1px;
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+    animation: 1.5s bounce infinite ease-in-out;
+    
+  }
+  h1 {
+    color: #007bff;
+    text-align: center;
+  }
+  h2 {
+    color: #343a40;
+    margin-top: 20px;
+    margin-right: 100px;
+    position: static;
+    margin-bottom: 20px; /* Tambahkan jarak antara tabel */
+    text-align: auto;
+  }
+  p {
+    line-height: 1.6;
+    color: #6c757d;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  pre {
+    background-color: #f0f6ff;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+   .btn-container {
+    margin: 20px 20px 30px 20px;
+    border-radius: 50%;
+    // animation: 1.5s bounce infinite ease-in-out;
+    
+  }
+.btn {
+  display: block;
+  width: calc(100% - 40px);
+  margin: 0 auto 20px; /* Menambahkan margin ke bawah sebesar 20px */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  box-shadow: 10px 8px 1px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  input[type="checkbox"]{
+    position: relative;
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background-color: #434343;
+    outline: none;
+    border-radius: 10px;
+    transision: .5s ease;
+    cursor: pointer;
+  }
+  input[type="checkbox"]:checked{
+    background-color: #3664ff;
+  }
+  input[type="checkbox"]::before{
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px; 
+    background-color: #fcfcfc;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+  }
+  input[type="checkbox"]:checked::before{
+    transform: translateX(20px);
+  }
+  .dark {
+    background-color: #333333;
+    color: #ffffff;
+    
+  }
+  
+  @keyframes clickAnimation {
+    0% {
+      transform: scale(1);
+      background-color: #007bff;
+    }
+    50% {
+      transform: scale(0.95);
+      background-color: #0056b3;
+    }
+    100% {
+      transform: scale(1);
+      background-color: #007bff;
+    }
+  }
+
+  .btn:active {
+    animation: clickAnimation 0.2s ease;
+  }
+  
+ @keyframes bounce {
+    0%, 80%, 100% {
+      transform: scale(0);}
+  40% {
+    transform: scale(1);
+  }
+ }
+ 
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+</style>
+</head>
+<body>
+  <div id="preloader"></div>
+<div class="container-l">
+  <div class="loading">
+    <div class="dot-one"></div>
+        <div class="dot-two"></div>
+            <div class="dot-three"></div>
+            
+  </div>
+  <input type="checkbox" onclick="ubahMode()">
+  <div class="container">
+  <h1>Free | APIs</h1>
+  <p>Welcome to the API Document for our service. Below you will find information about the available endpoints and how to use them. I want to tell you something that this rest api was made from start to finish by Faris and I think that is very cool</p>
+  
+  <div class="container">
+  <div class="container-h">
+   <h1>Endpoints</h1>
+  <div class="btn-container" onclick="ubahMode()">
+      <h2>Artificial Intelegence</h2>
+  <div class="btn-container">
+    <a href="/api/ragbot?message=hai" class="btn">Ragbot Ai</a>
+    <a href="/api/degreeguru?message=hai" class="btn">Degreeguru Ai</a>
+    <a href="/api/pinecone?message=hai" class="btn">Pinecone Ai</a>
+    <a href="/api/smartcontract?message=hai" class="btn">Smartcontract Ai</a>
+    <a href="/api/blackboxAIChat?message=hai" class="btn">BlackboxAIChat Ai</a>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+  <h2>Usage</h2>
+  <p>To use the endpoints, send a GET request to the desired endpoint with the following query parameter:</p>
+  <ul>
+    <li>message: Your message content</li>
+  </ul>
+  
+  <h2>Response</h2>
+  <p>The response will be in JSON format with the following structure:</p>
+  <pre>
+  {
+    "status": 200,
+    "creator": "Hacker",
+    "data": {
+      "response": "Response data here"
+    }
+  }
+  </pre>
+</div>
+</div>
+<h2>Thanks To</h2>
+<p>Who Help Me To Develop This Api's Website</p>
+ <div class="container">
+  <pre>
+  {
+    "status": 200,
+    "tqto":    "• Allah Swt,
+                • Surya,
+                • Reno,
+                • 𝐙𝐞𝐞𝐟𝐨𝐫𝐜𝐞𝐞,
+                • Ifung,
+                • Arifzyn,
+                • Hyuu,
+                • My self,"
+             }
+               
+    "data": {
+       "response: Thank for you all"
+    }
+  }
+  </pre>
+  </div>
+</div>
+</div>
+
+  <script>
+     function ubahMode() {
+       const ubah = document.body;
+       ubah.classList.toggle("dark");
+     }
+
+     var loader = document.getElementById("preloader");
+    window.addEventListener("load", function() {
+         loader.style.display = "none";
+    });
+         
+    document.addEventListener("DOMContentLoaded", function() {
+      var buttons = document.querySelectorAll('.btn');
+      
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault(); // berhenti perilaku default dari link © ZeeForcee
+          var destinationUrl = this.getAttribute('href'); // Ambil URL tujuan dari atribut href
+
+          // Terapkan animasi
+          this.style.animation = 'clickAnimation 0.5s ease'; // tambahkan animasi
+
+          // Tambahkan event listener untuk menghapus animasi setelah selesai
+          this.addEventListener('animationend', function() {
+            this.style.animation = ''; // Hapus animasi
+          });
+
+          // Gunakan setTimeout buat nunggu animasi selesai sebelum navigasi
+          // Sesuain dengan durasi animasi CSS
+          setTimeout(function() {
+            window.location.href = destinationUrl;
+          }, 500); // Sesuain dengan durasi animasi dalam milidetik
+        });
+      });
+    });
+</script>
+</body>
+</html>
