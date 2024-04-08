@@ -3,10 +3,32 @@ const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
 
+const { fetchJson } = require('./lib/myfunc');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.enable("trust proxy");
 app.set("json spaces", 2);
+
+// Mess err
+mess = {
+    error: {
+        status: false,
+        message: 'Error, Service Unavaible',
+        maintanied_by: 'FarisFreya'
+    },
+    noturl: {
+    	status: false,
+    	message: 'Error, Invalid Url',
+    	maintanied_by: 'FarisFreya'
+    },
+    notquery: {
+    	status: false,
+    	code: 403,
+    	message: 'Error, Invalid Query',
+    	maintanied_by: 'FarisFreya'
+    }
+}
 
 // Middleware untuk CORS
 app.use(cors());
@@ -100,7 +122,7 @@ app.get('/api/ragbot', async (req, res) => {
     const response = await ragBot(message);
     res.status(200).json({
       status: 200,
-      creator: "Hyuu",
+      creator: "FarisFreya",
       data: { response }
     });
   } catch (error) {
@@ -118,7 +140,7 @@ app.get('/api/degreeguru', async (req, res) => {
     const response = await degreeGuru(message);
     res.status(200).json({
       status: 200,
-      creator: "Hyuu",
+      creator: "FarisFreya",
       data: { response }
     });
   } catch (error) {
@@ -136,7 +158,7 @@ app.get('/api/pinecone', async (req, res) => {
     const response = await pinecone(message);
     res.status(200).json({
       status: 200,
-      creator: "Hyuu",
+      creator: "FarisFreya",
       data: { response }
     });
   } catch (error) {
@@ -154,7 +176,7 @@ app.get('/api/smartcontract', async (req, res) => {
     const response = await smartContract(message);
     res.status(200).json({
       status: 200,
-      creator: "Hyuu",
+      creator: "FarisFreya",
       data: { response }
     });
   } catch (error) {
@@ -172,94 +194,12 @@ app.get('/api/blackboxAIChat', async (req, res) => {
     const response = await blackboxAIChat(message);
     res.status(200).json({
       status: 200,
-      creator: "Hyuu",
+      creator: "FarisFreya",
       data: { response }
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
-
-// Endpoint untuk facebook
-app.get('/api/facebook', async (req, res) => {
-    const url = req.query.url;
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan' });
-    }
-    let response = await fetchJson(`https://xorizn-downloads.vercel.app/api/downloads/facebook?url=${url}`);
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.result
-    });
-});
-
-// Endpoint untuk mediafire
-app.get('/api/mediafire', async (req, res) => {
-    const url = req.query.url;
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan' });
-    }
-    const response = await fetchJson(`https://xorizn-downloads.vercel.app/api/downloads/mediafire?url=${url}`);
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.result
-    });
-});
-
-// Endpoint untuk tiktok
-app.get('/api/tiktok', async (req, res) => {
-    const url = req.query.url;
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan' });
-    const response = await fetchJson(`https://skizo.tech/api/tiktok?apikey=prince&url=${url}`);
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.data
-    });
-});
-
-// Endpoint untuk soundcloud
-app.get('/api/soundcloud', async (req, res) => {
-    const url = req.query.url;
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan' });
-    const response = await fetchJson(`https://xorizn-downloads.vercel.app/api/downloads/soundcloud?url=${url}`);
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.result
-    });
-});
-
-// Endpoint untuk twitter
-app.get('/api/twitter', async (req, res) => {
-    const url = req.query.url;
-    if (!url) {
-      return res.status(400).json({ error: 'Parameter "url" tidak ditemukan' });
-    }
-    const response = await fetchJson(`https://itzpire.site/download/play-youtube?title=${url}`);
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.result
-    });
-});
-
-// Endpoint untuk play
-app.get('/api/play', async (req, res) => {
-    const message = req.query.message;
-    if (!message) {
-      return res.status(400).json({ error: 'Parameter "message" tidak ditemukan' });
-    }
-    const response = await fetchJson(`https://itzpire.site/download/play-youtube?title=${message}`)
-    res.status(200).json({
-      status: 200,
-      creator: "Hyuu",
-      data: response.data
-    });
 });
 
 // Handle 404 error
